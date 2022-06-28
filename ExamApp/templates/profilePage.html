@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">  
+    <style>
+
+    </style>
+</head>
+<body>
+    <h1>Hello {{user.fname}}!</h1>
+    <a href="/logout">Logout</a>
+    <button class="button"><a href="">View stats</a></button>
+    <button class="button"><a href="/wishes/new">Make a wish!</a></button>
+    
+
+    <hr>
+    <div>
+    <h3>Your Wish List:</h3>
+    <table>
+        <tr class="col1">
+            <th>Item</th>
+            <th>Data added</th>
+            <th>Action</th>
+        </tr>
+        {%for wish in wishs %}
+        {%if wish.user == user and wish.granted == False%}
+        <tr class="col2">
+            <td>{{wish.item}}</td>
+            <td>{{wish.created_at}}</td>
+            <td>
+                <a href="/wishes/{{ wish.id }}/delete">Remove</a> |
+                <a href="/wishes/{{ wish.id }}/edit">Edit</a> |
+                <a href="/wishes/{{ wish.id }}/grant">Granted!</a> 
+        </tr>
+
+        {%endif%}
+        {%endfor%}
+    </table>
+    </div>
+    <div>
+        <h3>Granted Wishes:</h3>
+        <table>
+            <tr class="col1">
+                <th>Item</th>
+                <th>Wisher</th>
+                <th>Data Added</th>
+                <th>Data Granted</th>
+                <th>Likes</th>
+                <th>Action</th>
+            </tr>
+            {%for wish in wishs %}
+            {%if wish.granted == True%}
+            <tr class="col2">
+                <td>{{wish.item}}</td>
+                <td>{{wish.user.fname}}</td>
+                <td>{{wish.created_at}}</td>
+                <td>{{wish.granted_at}}</td>
+                <!-- <a href="/wishes/{{ wish.id }}/delete">Remove</a> -->
+
+                <td></td>
+                <td><a href=" ">Like</a></td>
+                
+            </tr>
+            {%endif%}
+            {%endfor%}
+        </table>
+        </div>
+
+    </body>
+    </html>

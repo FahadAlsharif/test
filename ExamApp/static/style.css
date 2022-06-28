@@ -1,0 +1,44 @@
+h1{
+    color: brown;
+}
+.box{
+    border: 3px solid black;
+    width: 300px;
+    height: 300px;
+    margin: 30px;
+    padding: 20px;
+}
+.box2{
+    padding: 5px;
+}
+.box3{
+    border: 3px solid black;
+    width: 400px;
+    height: 400px;
+    margin: 30px;
+    padding: 20px;
+}
+
+table, th, td {
+    border: 3px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+  }
+  .col1{
+    background-color: rgb(124, 124, 124);
+  }
+  .col2{
+    background-color: rgb(214, 212, 212);
+  }
+
+  .button{
+    box-shadow: 10px 5px 5px black;
+    box-shadow: 3px 3px black;
+    border: 2px solid #000;
+    border-radius: 0%;
+    background-color: rgb(255, 255, 255);
+    color: white;
+    font-size: 15px;
+
+
+}
