@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+
+    <!-- use just shows or ../ it's same result -->
+    <div class="box3">
+        <a href="/logout">Logout</a>
+        <form action="edit1" method="post">
+            {%csrf_token%}
+            <h1>Hello {{user.fname}}! Let's edit your wish!</h1>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <div>
+                <h4>I wish for:</h4><input type="item" name="item" value="{{wish.item}}">
+            </div>
+            <div>
+                <h4>Description: </h4><textarea name="desc" cols="30" rows="5">{{wish.desc}}</textarea>
+            </div>
+            <br>
+            <input type="submit" value="submit">
+        </form>
+        <button type="cancel"> <a href="/wishes">Cancel</a></button>
+   </div>
+</body>
+
+</html>
